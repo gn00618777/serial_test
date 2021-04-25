@@ -16,12 +16,14 @@ int check_header(int *packet, int check_len) {
 			memcpy(tmp, packet + i, check_len - i);
 			memcpy(packet, tmp, check_len - i);
 			left = i;
+			break;
 		}
 
 		//read one more byte to check whether the next
 		//byte is 0xba or not
 		if(i == check_len -1 && *(packet + i) == 0xab) {
 			left = 1;
+			break;
 		}
 	}
 
